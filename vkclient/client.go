@@ -38,6 +38,7 @@ func Auth(login string, password string) (*AuthResponse, error) {
 	if err != nil {
 		return nil, err
 	}
+
 	if err := json.Unmarshal(content, &jsonResponse); err != nil {
 		return nil, err
 	}
