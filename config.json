@@ -5,8 +5,9 @@
     "password": "password",
     "dbname": "vk_online",
 
-    "vklogin": " ",
-    "vkpssword": " ",
+    "vklogin": "",
+    "vkpssword": "",
+    "vkSearchName": "Пайгусов Евгений",
 
     "timeout": 5
 }

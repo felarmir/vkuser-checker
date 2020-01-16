@@ -3,6 +3,7 @@ package dbclient
 import (
 	"database/sql"
 	"fmt"
+	"strconv"
 
 	_ "github.com/lib/pq"
 
@@ -36,12 +37,12 @@ func (self *DBConnection) PGConnect() (*sql.DB, error) {
 
 func InsertRow(db *sql.DB, user vkclient.User) error {
 	sqlQuery := `
-	INSERT INTO user_status (user_id, first_name, last_name, isOnline)
+	INSERT INTO user_status (path, first_name, last_name, isOnline)
 	VALUES ($1, $2, $3, $4)
 	RETURNING id`
-
+	path := "https://vk.com/id" + strconv.Itoa(user.ID)
 	id := 0
-	err := db.QueryRow(sqlQuery, user.ID, user.FirstName, user.LastName, user.Online).Scan(&id)
+	err := db.QueryRow(sqlQuery, path, user.FirstName, user.LastName, user.Online).Scan(&id)
 	if err != nil {
 		return err
 	}

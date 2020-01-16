@@ -19,7 +19,7 @@ func main() {
 	if err != nil {
 		fmt.Println(err)
 	}
-	user, err := vkclient.UserByName("Denis Andreev", resp)
+	user, err := vkclient.UserByName(loadedConfig.SearchName, resp)
 	if err != nil {
 		fmt.Println(err)
 	}

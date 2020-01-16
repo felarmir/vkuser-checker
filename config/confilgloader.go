@@ -14,6 +14,7 @@ type Configuration struct {
 	DBname     string `json:"dbname"`
 	Vklogin    string `json:"vklogin"`
 	VKPassword string `json:"vkpssword"`
+	SearchName string `json:"vkSearchName"`
 	Timeout    int    `json:"timeout"`
 }
 

@@ -1,1 +1,1 @@
-CREATE TABLE user_status (id serial PRIMARY KEY, user_id integer, first_name varchar, last_name varchar, isOnline integer, last_request TIMESTAMP NOT NULL DEFAULT NOW());
+CREATE TABLE user_status (id serial PRIMARY KEY, path varchar, first_name varchar, last_name varchar, isOnline integer, last_request TIMESTAMP NOT NULL DEFAULT NOW());
