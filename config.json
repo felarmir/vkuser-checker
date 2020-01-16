@@ -1,0 +1,12 @@
+{
+    "host": "127.0.0.1",
+    "port": 32771,
+    "user": "postgres",
+    "password": "password",
+    "dbname": "vk_online",
+
+    "vklogin": " ",
+    "vkpssword": " ",
+
+    "timeout": 5
+}

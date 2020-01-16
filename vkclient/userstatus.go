@@ -18,19 +18,6 @@ type UserInfoResponse struct {
 	Response []User `json:"response"`
 }
 
-/*
-{
-"response": [{
-"id": 33629963,
-"first_name": "Denis",
-"last_name": "Andreev",
-"is_closed": false,
-"can_access_closed": true,
-"online": 1
-}]
-}
-*/
-
 func GetUserInfo(userID int, user *AuthResponse) (*User, error) {
 	parameters := make(map[string]string)
 	parameters["user_ids"] = strconv.Itoa(userID)
