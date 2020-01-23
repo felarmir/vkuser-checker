@@ -27,12 +27,32 @@ func (self *DBConnection) PGConnect() (*sql.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	//defer db.Close()
+
 	err = db.Ping()
 	if err != nil {
 		return nil, err
 	}
 	return db, nil
+}
+
+func UserStatisticsList(db *sql.DB, lastID int) ([]vkclient.UserStatisticRow, error) {
+	sqlQuery := `
+	SELECT * FROM user_status
+	WHERE id > $1
+	`
+	rows, err := db.Query(sqlQuery, lastID)
+	if err != nil {
+		return nil, err
+	}
+	var tmpUsers []vkclient.UserStatisticRow
+	for rows.Next() {
+		var u vkclient.UserStatisticRow
+		if err := rows.Scan(&u.ID, &u.Path, &u.FirstName, &u.LastName, &u.Isonline, &u.LastRequest); err != nil {
+			fmt.Println(err)
+		}
+		tmpUsers = append(tmpUsers, u)
+	}
+	return tmpUsers, nil
 }
 
 func InsertRow(db *sql.DB, user vkclient.User) error {
@@ -46,6 +66,5 @@ func InsertRow(db *sql.DB, user vkclient.User) error {
 	if err != nil {
 		return err
 	}
-	fmt.Println("New record ID is:", id)
 	return nil
 }

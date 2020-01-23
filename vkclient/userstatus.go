@@ -14,6 +14,15 @@ type User struct {
 	Online       int    `json:"online"`
 }
 
+type UserStatisticRow struct {
+	ID          int    `json:"id"`
+	Path        string `json:"path"`
+	FirstName   string `json:"first_name"`
+	LastName    string `json:"last_name"`
+	Isonline    bool   `json:"isonline"`
+	LastRequest string `json:"last_request"`
+}
+
 type UserInfoResponse struct {
 	Response []User `json:"response"`
 }
